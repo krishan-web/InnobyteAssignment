@@ -5,6 +5,7 @@ const mongoose = require('mongoose')
 const jwt =require('jsonwebtoken')
 const crypto=require('crypto');
 const { sendVerifyEmail } = require('./utils/sendVerifyEmail');
+const { sendOtp } = require('./utils/sendOtp');
 require('dotenv').config()
 
 const app = express()
@@ -68,6 +69,20 @@ app.post('/Login',async(req,res)=>{
     if(valueExist){
           const token=jwt.sign({password},SECRET,{expiresIn:'1hr'}); // Token created 
           res.json({message:'Logged in Successfully',token});
+    }else {
+          res.status(403).json({message:'Invalid Credential'});
+    }
+})
+
+// OTP based Login
+app.post('/OtpLogin',async(req,res)=>{
+    const {useremail}=req.body;
+    const valueExist=await User.findOne({useremail});
+    if(valueExist){
+          const otp=Math.floor(Math.random()*9000+1000);
+          sendOtp(valueExist.FirstName,otp);
+          const token=jwt.sign({useremail},SECRET,{expiresIn:'1hr'}); // Token created 
+          res.json({message:'Logged in Successfully',token,otp});
     }else {
           res.status(403).json({message:'Invalid Credential'});
     }
