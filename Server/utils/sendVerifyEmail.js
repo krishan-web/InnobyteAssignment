@@ -5,7 +5,7 @@ const createtransport=()=>{
     const transporter = nodemailer.createTransport({
     service:"hotmail",
     auth: {
-        user: "krishan221299@outlook.com",
+        user: process.env.AUTHEMAIL,
         pass: process.env.PASSWORD,
       },
     });
@@ -21,7 +21,7 @@ const createtransport=()=>{
     const transporter=createtransport();
     // Example of sending an email
     const mailOptions = {
-       from: 'krishan221299@outlook.com',  // Sender address
+       from: process.env.AUTHEMAIL,  // Sender address
        to: `${user.useremail}`,   // List of recipients
        subject: 'Verify your email', // Subject line
         html: `<p>Hello ${user.FirstName}! Verify Your Email by clicking this link</p>

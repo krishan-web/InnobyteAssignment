@@ -80,7 +80,7 @@ app.post('/OtpLogin',async(req,res)=>{
     const valueExist=await User.findOne({useremail});
     if(valueExist){
           const otp=Math.floor(Math.random()*9000+1000);
-          sendOtp(valueExist.FirstName,otp);
+          sendOtp(valueExist.FirstName,otp,useremail);
           const token=jwt.sign({useremail},SECRET,{expiresIn:'1hr'}); // Token created 
           res.json({message:'Logged in Successfully',token,otp});
     }else {
