@@ -1,7 +1,11 @@
 import React from 'react'
-import style from './Card.module.css'
+import style from './Login.module.css'
+import { useNavigate } from 'react-router-dom';
 
 function Card() {
+
+    const navigate=useNavigate();
+
   return (
     <div className={style.card}>
             <h1 className={style.box}>InnoByte</h1>
@@ -17,8 +21,8 @@ function Card() {
                 </div>
             </div>
             <div className={style.box2}>
-                <p>Login</p>
-                <p>Signup</p>
+               <p onClick={()=>navigate("/Login")}>Login</p>
+               <p onClick={()=>navigate("/Signup")}>Signup</p>
             </div>
     </div>
   )
