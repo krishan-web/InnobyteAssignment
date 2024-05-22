@@ -8,8 +8,8 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    padding:10px;
-    margin:2% auto;
+    /* padding:5px; */
+    margin:1% auto;
     border-radius:10px;
     position: relative;
     top:1rem;
@@ -31,11 +31,12 @@
 
 .box1{
     display: flex;
-    height:60%;
+    height:70%;
     width:100%;
     padding:10px;
     flex-direction: column;
     justify-content: space-between;
+    /* border: 2px solid white; */
 }
 
  .box11{
@@ -71,3 +72,53 @@
     text-decoration: underline;
     width:100%;
 }
+
+@media screen and (min-width:1300px){
+    .card{
+        width:25rem;
+        height:30rem;
+    }
+}
+
+ @media screen and (max-width:1299px){
+    .card{
+        width:22rem;
+        height:28rem;
+    }
+    .box12{
+        width:35%;
+    }   
+} 
+
+@media screen and (max-width:710px){
+    .card{
+        width:23rem;
+        height:30rem;
+    }
+    .box12{
+        width:35%;
+    }   
+} 
+
+@media screen and (max-width:480px){
+    .card{
+        width:18rem;
+        height:28rem;
+        margin:0 auto;
+    }
+    .box12{
+        width:35%;
+    }   
+} 
+
+@media screen and (max-width:380px){
+    .card{
+        width:15rem;
+        height:28rem;
+        margin:0 auto;
+    }
+    .box12{
+        width:35%;
+    }   
+} 
+

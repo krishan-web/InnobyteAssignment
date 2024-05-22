@@ -1,0 +1,60 @@
+.container1{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1%;
+}
+
+.container11{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left:2%;
+}
+
+.container12{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    width:15rem;
+}
+
+.btn{
+    padding: 5px 13px;
+    border-radius: 10px;
+    background-color: rgb(111, 196, 111);
+    color:antiquewhite;
+}
+
+.btn:hover{
+    background-color:rgb(3, 197, 51);
+}
+
+.container21{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.inputbox{
+    width:60%;
+}
+
+.input{
+    width:80%;
+    outline:none; 
+    border-radius:10px;
+}
+
+@media screen and (max-width:700) {
+    .input{
+        width:100%;
+    }
+}
+
+
+@media screen and (max-width:500) {
+    .input{
+        width:100%;
+    }
+}

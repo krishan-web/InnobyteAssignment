@@ -1,0 +1,21 @@
+
+
+.profile{
+    text-decoration: none;
+    color:rgb(174, 143, 148);
+}
+/* 
+.btn{
+    text-decoration: none;
+    color:rgb(122, 103, 103);
+    margin:4%;
+} */
+.btn{
+    margin:4%;
+    padding: 5px 13px;
+    border-radius: 10px;
+    background-color: rgb(3, 197, 51);
+    color:antiquewhite;
+    cursor: pointer;
+    text-decoration: none;
+}

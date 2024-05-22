@@ -1,0 +1,55 @@
+.box{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top:4%;
+    color: rgb(142, 108, 47);   
+}
+
+.box1{
+    width:50%;
+    height:100%;
+    left:10%;
+    border: 2px solid black;
+}
+
+.img{
+    width:100%;
+    height:100%;
+}
+
+.h1{
+    font-size: 80px;
+}
+
+.name{
+    font-size: 40px;
+}
+
+.skill{
+    margin-top:-4%;
+    font-size: 20px;
+}
+
+@media screen and (max-width:720px){
+    .h1{
+        font-size: 40px;
+    }
+    .name{
+        font-size: 25px;
+    }
+    .skill{
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width:460px){
+    .box{
+        display: flex;
+        flex-direction: column;
+    }
+    .box1{
+        width: 70%;
+        height:100%;
+    }
+}

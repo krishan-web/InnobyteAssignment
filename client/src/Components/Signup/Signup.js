@@ -7,6 +7,7 @@ function Signup() {
     const navigate=useNavigate();
 
   return (
+    <div className={style.container}>
     <div className={style.card}>
     <h1 className={style.box}>InnoByte</h1>
     <div className={style.box1}>
@@ -30,6 +31,7 @@ function Signup() {
         <p onClick={()=>navigate("/Login")}>Login</p>
         <p onClick={()=>navigate("/Signup")}>Signup</p>
     </div>
+   </div>
 </div>
   )
 }
