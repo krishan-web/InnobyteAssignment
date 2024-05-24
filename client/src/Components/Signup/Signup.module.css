@@ -73,6 +73,23 @@
     width:100%;
 }
 
+.box21{
+    display: flex;
+}
+
+.Login:hover{
+    color:burlywood;
+}
+
+.otp:hover{
+    color:burlywood;
+}
+
+.sign:hover{
+    color:burlywood;
+}
+
+
 @media screen and (min-width:1300px){
     .card{
         width:25rem;

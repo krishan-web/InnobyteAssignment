@@ -3,6 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 // JSON Web Tokens (JWTs)
 const jwt =require('jsonwebtoken')
+const bcrypt= require('bcrypt')
 const crypto=require('crypto');
 cors = require('cors');
 const { sendVerifyEmail } = require('./utils/sendVerifyEmail');
@@ -15,7 +16,9 @@ const port = 3000
 // SECRET key for token.
 const SECRET='hi169lm';
 app.use(cors());
-
+var otp=0;
+const otp_time=new Date();
+var otp_hour=0;
 
 //creating the schema for User 
 const userSchema=new mongoose.Schema({
@@ -81,19 +84,35 @@ app.post('/Login',async(req,res)=>{
     }
 })
 
-// OTP based Login
-app.post('/OtpLogin',async(req,res)=>{
+app.post('/otp',async(req,res)=>{
     const {useremail}=req.body;
     const valueExist=await User.findOne({useremail});
     if(valueExist){
-          const otp=Math.floor(Math.random()*9000+1000);
+          otp=Math.floor(Math.random()*9000+1000);
+          otp_hour=otp_time.getHours()+1;
           sendOtp(valueExist.FirstName,otp,useremail);
-          const token=jwt.sign({useremail},SECRET,{expiresIn:'1hr'}); // Token created 
-          res.json({message:'Logged in Successfully',token,otp});
+    }else {
+          res.status(403).json({message:'Invalid Credential'});
+    }
+}
+)
+
+// OTP based Login
+app.post('/OtpLogin',async(req,res)=>{
+    const {useremail,resOtp}=req.body;
+    const valueExist=await User.findOne({useremail});
+    if(valueExist){
+          if(otp_time.getHours()<otp_hour){
+            if(resOtp==otp){
+              const token=jwt.sign({useremail},SECRET,{expiresIn:'1hr'}); // Token created 
+              res.json({message:'Logged in Successfully',token});
+            }else {res.status(403).json({message:'Invalid Credential'});}
+          }else {res.status(403).json({message:'Request OTP'});}
     }else {
           res.status(403).json({message:'Invalid Credential'});
     }
 })
+
 
 app.put('/Profile',userauthentication,async(req,res)=>{
     const {FirstName,LastName,useremail,password}=req.body;

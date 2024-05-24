@@ -67,9 +67,12 @@ const handlePass = (event) => {
         </div>
     </div>
     <div className={style.box2}>
-        <p onClick={()=>navigate("/Login")}>Login</p>
-        <p onClick={()=>navigate("/Signup")}>Signup</p>
-    </div>
+              <div className={style.box21}>
+               <p className={style.Login} onClick={()=>navigate("/Login")}>Login</p>/
+               <p className={style.otp} onClick={()=>navigate("/otp")}>Otp</p>
+              </div>
+               <p className={style.sign} onClick={()=>navigate("/Signup")}>Signup</p>
+            </div>
    </div>
 </div>
   )

@@ -19,3 +19,12 @@
     cursor: pointer;
     text-decoration: none;
 }
+
+.otp{
+    text-decoration: none;
+    color: antiquewhite;
+}
+
+.otp:hover{
+    text-decoration: underline;
+}

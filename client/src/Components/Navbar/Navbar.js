@@ -18,7 +18,10 @@ function Navbar() {
         </li>
       </ul>
         <div className='d-flex justify-content-around mx-2 ' >
-        <Link className={style.btn} to="/Login">Login</Link>
+          <div className={style.btn}>
+             <Link className={style.otp}  to="/Login">Login</Link>/
+             <Link className={style.otp} to="/otp">Otp</Link>
+          </div>
         <Link className={style.btn} to="/Signup">Signup</Link>
        </div>
     </div>
