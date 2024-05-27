@@ -2,7 +2,11 @@
 
 .profile{
     text-decoration: none;
-    color:rgb(174, 143, 148);
+    color:rgb(145, 161, 149);
+}
+
+.profile:hover{
+    text-decoration: underline;
 }
 /* 
 .btn{
@@ -14,7 +18,7 @@
     margin:4%;
     padding: 5px 13px;
     border-radius: 10px;
-    background-color: rgb(3, 197, 51);
+    background-color: rgb(64, 133, 212);
     color:antiquewhite;
     cursor: pointer;
     text-decoration: none;
@@ -26,5 +30,28 @@
 }
 
 .otp:hover{
+    text-decoration: underline;
+}
+
+.btn1:hover{
+    text-decoration: underline;
+}
+
+.Logbtn{
+    margin:4%;
+    width:6rem;
+    padding: 5px 13px;
+    border-radius: 10px;
+    background-color: rgb(64, 133, 212);
+    
+}
+
+.Log{
+    text-decoration: none;
+    cursor: pointer;
+    color:rgb(246, 232, 215);
+}
+
+.Log:hover{
     text-decoration: underline;
 }

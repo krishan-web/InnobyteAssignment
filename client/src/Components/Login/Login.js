@@ -2,11 +2,14 @@ import React,{useState} from 'react'
 import style from './Login.module.css'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
+import {useSetRecoilState} from 'recoil';
+import { userState } from '../../Recoil/atom';
 
 function Card() {
 
   const [email,setEmail]=useState('');
   const [pass,setPass]=useState('');
+  const setUser=useSetRecoilState(userState);
   const navigate=useNavigate();
 
   const handleEmail = (event) => {
@@ -17,8 +20,8 @@ const handlePass = (event) => {
   };
    
   // To fetch the data from the backend(db).
-  const FetchUserData=async()=>{
-      const res=await axios.post("https:localhost:3000/Login",{
+  const PostUserData=async()=>{
+      const res=await axios.post("http://localhost:3000/Login",{
         useremail:email,
         password:pass
       }).catch(error=>{
@@ -26,6 +29,8 @@ const handlePass = (event) => {
         console.log(error);
       })
       const data=res.data;
+      setUser({email});
+      console.log(data);
       localStorage.setItem('token',data.token);
       navigate('/');
   } 
@@ -43,7 +48,7 @@ const handlePass = (event) => {
                 <input className={style.input} value={pass} onChange={handlePass}  type="text" id="password" placeholder='Password'/> 
                 </div>
                 <div >
-                    <p className={style.box12} onClick={FetchUserData}>Submit</p>
+                    <p className={style.box12} onClick={PostUserData}>Submit</p>
                 </div>
             </div>
             <div className={style.box2}>

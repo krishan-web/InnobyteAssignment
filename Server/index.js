@@ -3,7 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 // JSON Web Tokens (JWTs)
 const jwt =require('jsonwebtoken')
-const bcrypt= require('bcrypt')
+// const bcrypt= require('bcrypt')
 const crypto=require('crypto');
 cors = require('cors');
 const { sendVerifyEmail } = require('./utils/sendVerifyEmail');
@@ -36,7 +36,7 @@ const userSchema=new mongoose.Schema({
 const User=mongoose.model('User',userSchema);
 
 // Setting connection with the database.
-mongoose.connect('mongodb+srv://mongo:Krishan123@user.sbsembm.mongodb.net/',{dbName:'User'});
+mongoose.connect('mongodb+srv://mongo:Krishan123@user.zxf62sd.mongodb.net/',{dbName:'User'});
 
 // middleware for the user authentication 
 const userauthentication=(req,res,next)=>{
@@ -47,9 +47,10 @@ const userauthentication=(req,res,next)=>{
         jwt.verify(token,SECRET,(err,user)=>{ //verifying the token
             if(err) return res.sendStatus(403);
             // This user information is then attached to the req object for use in subsequent middleware functions or route handlers. 
-            res.user=user;
+            res.useremail=user.useremail;
             next();
         })
+        
      }else {
         res.status(401).json({message:"Error! Token invalid."})
      }
@@ -63,11 +64,11 @@ app.post('/Signup',async(req,res)=>{
     if(valueExist){
         res.status(403).json({message:'User already existed!'});
     }else{
-        
         const newuser=await User.create({FirstName,LastName,useremail,password,emailToken:crypto.randomBytes(64).toString('hex')}); // newuser created with their details
         sendVerifyEmail(newuser);
-        const token=jwt.sign({password},SECRET,{expiresIn:'1hr'}) // Token created
-        res.status(200).json({message:"User created successfully",token});
+        const token=jwt.sign({useremail,password},SECRET,{expiresIn:'1hr'}) // Token created
+        const emailtoken=newuser.emailToken;
+        res.status(200).json({message:"User created successfully",token,emailtoken});
     }
     // console.log('Hello world bro.')
 })
@@ -77,7 +78,8 @@ app.post('/Login',async(req,res)=>{
     const {useremail,password}=req.body;
     const valueExist=await User.findOne({useremail,password});
     if(valueExist){
-          const token=jwt.sign({password},SECRET,{expiresIn:'1hr'}); // Token created 
+          const token=jwt.sign({useremail,password},SECRET,{expiresIn:'1hr'}); // Token created 
+          console.log("Login done")
           res.json({message:'Logged in Successfully',token});
     }else {
           res.status(403).json({message:'Invalid Credential'});
@@ -90,7 +92,8 @@ app.post('/otp',async(req,res)=>{
     if(valueExist){
           otp=Math.floor(Math.random()*9000+1000);
           otp_hour=otp_time.getHours()+1;
-          sendOtp(valueExist.FirstName,otp,useremail);
+          const Name=valueExist.FirstName;
+          sendOtp(Name,otp,useremail);
     }else {
           res.status(403).json({message:'Invalid Credential'});
     }
@@ -115,20 +118,25 @@ app.post('/OtpLogin',async(req,res)=>{
 
 
 app.put('/Profile',userauthentication,async(req,res)=>{
-    const {FirstName,LastName,useremail,password}=req.body;
+    const {FirstName,LastName,useremail,Phone,Address}=req.body;
     const valueExist=await User.findOne({useremail}); // Searching for the useremail exist or not
-    console.log(valueExist.FirstName,LastName,password);
+    //console.log(valueExist.FirstName,LastName,password);
     if(valueExist){
-        await User.updateMany({FirstName,LastName,useremail,password});
-        res.json({message:"Updated Successfully"});
+        await User.updateMany({useremail},{$set:{FirstName,LastName,Phone,Address}});
+        res.json({message:"Updated Successfully",Address,Phone});
     }else{
         res.json({message:"Doesn't Exist"});
     }
      
 })
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
+app.get('/data', userauthentication,async(req, res) => {
+
+    const user1 = await User.findOne({ useremail: res.useremail });
+    const [FirstName,LastName,useremail,emailToken,Address,Phone]=[user1.FirstName,user1.LastName,
+           user1.useremail,user1.emailToken,user1.Address,user1.Phone]; 
+    res.json({message:"Data of user",FirstName,LastName,useremail,emailToken,Address,Phone});  
+
 })
 
 app.listen(port, () => {

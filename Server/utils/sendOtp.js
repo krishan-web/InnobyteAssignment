@@ -14,10 +14,7 @@ const createtransport=()=>{
     return transporter;
     };
 
-    
-
-
-    const sendOtp=({FirstName,otp,useremail})=>{
+    const sendOtp=(FirstName,otp,useremail)=>{
     
     const transporter=createtransport();
     // Example of sending an email

@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import style from './Signup.module.css'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import {useSetRecoilState} from 'recoil';
+import { userState } from '../../Recoil/atom';
+
 
 function Signup() {
     
@@ -9,6 +12,8 @@ function Signup() {
   const [last,setLast]=useState('');
   const [email,setEmail]=useState('');
   const [pass,setPass]=useState('');
+
+  const setUser=useSetRecoilState(userState);
 
   const handleFirst = (event) => {
     // console.log(event.target.value);
@@ -28,8 +33,7 @@ const handlePass = (event) => {
   
     const navigate=useNavigate();
 
-    const FetchUserData=async()=>{
-      console.log({first},{last},email,pass);
+    const PostUserData=async()=>{
       const res=await axios.post("http://localhost:3000/Signup",{
         FirstName:first,
         LastName:last,
@@ -39,9 +43,12 @@ const handlePass = (event) => {
         //handle error
         console.log("Error in SignUp");
       })
-      console.log(res);
+      // console.log(res);
+      setUser({email});
       const data=res.data;
+      // console.log(res);
       localStorage.setItem('token', data.token);
+      
       navigate('/');
     }
 
@@ -63,7 +70,7 @@ const handlePass = (event) => {
         <input className={style.input} onChange={handlePass} value={pass} type="text" id="password" placeholder='Password'/> 
         </div>
         <div >
-            <p className={style.box12} onClick={FetchUserData}>Submit</p>
+            <p className={style.box12} onClick={PostUserData}>Submit</p>
         </div>
     </div>
     <div className={style.box2}>

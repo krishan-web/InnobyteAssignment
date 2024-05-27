@@ -23,7 +23,7 @@ const createtransport=()=>{
        to: `${user.useremail}`,   // List of recipients
        subject: 'Verify your email', // Subject line
         html: `<p>Hello ${user.FirstName}! Verify Your Email by clicking this link</p>
-               <a href="https://localhost:3001/email?emailToken=${user.emailToken}">Verify your email!</a>` // HTML body
+               <a href="http://localhost:3001/Email?emailToken=${user.emailToken}">Verify your email!</a>` // HTML body
     };
   
     transporter.sendMail(mailOptions, (error,info) => {

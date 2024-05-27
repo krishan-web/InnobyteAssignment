@@ -1,0 +1,22 @@
+.container{
+   
+    margin:2% auto;
+    width:40rem;
+    height:12rem;
+    background-color: rgb(244, 240, 240);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    color:rgb(84, 106, 154);
+}
+
+.h1{
+    padding-top: 6%;
+   font-size: 4rem;
+}
+
+.p{
+    padding-bottom: 10%;
+    font-size: 1.5rem;
+}

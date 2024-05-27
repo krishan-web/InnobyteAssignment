@@ -19,17 +19,17 @@ const handleotp = (event) => {
 
   // To get otp 
   const getOtp=async()=>{
-    const res=await axios.post("https:localhost:3000/otp",{
+    const res=await axios.post("http://localhost:3000/otp",{
         useremail:email,
     }).catch(error=>{
-        console.log(error);
+        console.log("Failed to make a request",error);
     })
     console.log(res.data);
   }
    
   // To fetch the data from the backend(db).
   const FetchUserData=async()=>{
-      const res=await axios.post("https:localhost:3000/OtpLogin",{
+      const res=await axios.post("http://localhost:3000/OtpLogin",{
         useremail:email,
         resOtp:otp
       }).catch(error=>{
@@ -49,7 +49,7 @@ const handleotp = (event) => {
             <div className={style.box1}>
                 <div className={style.box11}>
                 <input className={style.input} value={email} onChange={handleEmail} type="text" id="Useremail" placeholder='Enter the Email'/>
-                <div className={style.sendemail}><p className={style.send}>Send</p></div>
+                <div className={style.sendemail}><p className={style.send} onClick={getOtp}>Send</p></div>
                 </div>
                 <div className={style.box11}>
                 <input className={style.input} value={otp} onChange={handleotp}  type="text" id="password" placeholder='Enter the Otp'/> 
