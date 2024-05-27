@@ -8,6 +8,7 @@ import Profile from './Components/Profile/Profile';
 import Otp from './Components/Otp'
 import {RecoilRoot,} from 'recoil';
 import Email from './Components/Email/Email';
+import EmailVerify from './Components/Email/EmailVerify'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
          <Route exact path="/Login" element={<Login/>}/>
          <Route exact path="/Otp" element={<Otp/>}/>
          <Route exact path="/Email" element={<Email/>}/>
+         <Route exact path="/EmailVerify" element={<EmailVerify/>}/>
          <Route exact path="/Signup" element={<Signup/>}/>
         </Routes>
       </RecoilRoot>

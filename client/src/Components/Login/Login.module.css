@@ -132,7 +132,7 @@
 @media screen and (max-width:710px){
     .card{
         width:23rem;
-        height:30rem;
+        height:25rem;
     }
     .box12{
         width:35%;
@@ -143,7 +143,7 @@
     .card{
         width:18rem;
         height:28rem;
-        margin-right:15rem;
+        margin:0 auto;
     }
     .box12{
         width:35%;

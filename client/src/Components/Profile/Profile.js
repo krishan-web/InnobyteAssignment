@@ -100,37 +100,37 @@ function Profile() {
 
       <div >
         <div className={style.container21} >
-          <label htmlFor="FirstName">First Name</label>
+          <label htmlFor="FirstName" className={style.label}>First Name</label>
           <div className={style.inputbox}>
-            <input className={style.input} onChange={handleFirst} value={first} type="text" id="FirstName"  />
+            <input className={style.input}  onChange={handleFirst} value={first} type="text" id="FirstName"  />
           </div>
         </div>
         <hr/>
         <div className={style.container21}>
-          <label htmlFor="LastName">Last Name</label>
+          <label htmlFor="LastName" className={style.label}>Last Name</label>
           <div className={style.inputbox}>
-            <input className={style.input} onChange={handleLast} value={last} style={{marginLeft:".2%"}} type="text" id="LastName"  />
+            <input className={style.input}  onChange={handleLast} value={last}  type="text" id="LastName"  />
           </div>
         </div>
         <hr/>
         <div className={style.container21}>
-          <label htmlFor="Email">Email address</label>
+          <label htmlFor="Email" className={style.label}>Email address</label>
           <div className={style.inputbox}>
-            <input className={style.input} onChange={handleEmail} value={email} disabled={true} style={{marginRight:"1.5%"}} type="email" id="Email" />
+            <input className={style.input} onChange={handleEmail} value={email} disabled={true}  type="email" id="Email" />
           </div>
         </div>
         <hr/>
         <div className={style.container21}>
-          <label htmlFor="Phone">Phone Number</label>
+          <label htmlFor="Phone" className={style.label}>Phone Number</label>
           <div className={style.inputbox}>
-            <input className={style.input} onChange={handlePhone} value={phone} style={{marginRight:"2%"}} type="text" id="Phone" />
+            <input className={style.input} onChange={handlePhone} value={phone}type="text" id="Phone" />
           </div>
         </div>
         <hr/>
         <div className={style.container21}>
-          <label htmlFor="Address">Address</label>
+          <label htmlFor="Address" className={style.label}>Address</label>
           <div className={style.inputbox} >
-             <input className={style.input} onChange={handleAdd} value={add} style={{marginLeft:"1%"}} type="text" id="Address" />
+             <input className={style.input}  onChange={handleAdd} value={add} type="text" id="Address" />
           </div>
         </div>
       </div>

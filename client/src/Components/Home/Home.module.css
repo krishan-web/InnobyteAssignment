@@ -31,19 +31,7 @@
     font-size: 20px;
 }
 
-@media screen and (max-width:720px){
-    .h1{
-        font-size: 40px;
-    }
-    .name{
-        font-size: 25px;
-    }
-    .skill{
-        font-size: 15px;
-    }
-}
-
-@media screen and (max-width:460px){
+@media screen and (max-width:950px){
     .box{
         display: flex;
         flex-direction: column;
@@ -51,5 +39,31 @@
     .box1{
         width: 70%;
         height:100%;
+    }
+}
+
+
+@media screen and (max-width:650px){
+    .h1{
+        font-size: 60px;
+    }
+    .name{
+        font-size: 30px;
+    }
+    .skill{
+        font-size: 20px;
+    }
+}
+
+
+@media screen and (max-width:490px){
+    .h1{
+        font-size: 40px;
+    }
+    .name{
+        font-size: 20px;
+    }
+    .skill{
+        font-size: 15px;
     }
 }

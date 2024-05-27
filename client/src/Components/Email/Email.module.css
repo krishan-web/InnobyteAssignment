@@ -13,10 +13,34 @@
 
 .h1{
     padding-top: 6%;
-   font-size: 4rem;
+    font-size: 4rem;
 }
 
 .p{
     padding-bottom: 10%;
     font-size: 1.5rem;
+}
+
+.heading{
+   margin:0 auto;
+   font-size: 4rem;
+}
+
+@media screen and (max-width:750px){
+    .container{
+        margin:4% auto;
+        width:18rem;
+        height:6rem;
+    }
+
+    .h1{
+        font-size: 2rem;
+    }
+    .p{
+        font-size: .8rem;
+    }
+    .heading{
+        font-size: 2rem;
+    }
+
 }

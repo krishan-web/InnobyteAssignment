@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: 1%;
+    
 }
 
 .container11{
@@ -34,10 +35,18 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+ 
+}
+
+.label{
+    width:40%;
+    display: flex;
+    padding-left:2%;
 }
 
 .inputbox{
     width:60%;
+  
 }
 
 .input{
@@ -46,15 +55,16 @@
     border-radius:10px;
 }
 
+
 @media screen and (max-width:700) {
     .input{
         width:100%;
     }
 }
 
-
 @media screen and (max-width:500) {
     .input{
         width:100%;
     }
 }
+

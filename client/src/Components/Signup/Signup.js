@@ -48,8 +48,7 @@ const handlePass = (event) => {
       const data=res.data;
       // console.log(res);
       localStorage.setItem('token', data.token);
-      
-      navigate('/');
+      navigate('/EmailVerify');
     }
 
   return (
