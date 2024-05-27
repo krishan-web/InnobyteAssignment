@@ -34,7 +34,7 @@ const handlePass = (event) => {
     const navigate=useNavigate();
 
     const PostUserData=async()=>{
-      const res=await axios.post("http://localhost:3000/Signup",{
+      const res=await axios.post("http://localhost:3001/user/Signup",{
         FirstName:first,
         LastName:last,
         useremail:email,

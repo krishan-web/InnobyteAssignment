@@ -21,7 +21,7 @@ const handlePass = (event) => {
    
   // To fetch the data from the backend(db).
   const PostUserData=async()=>{
-      const res=await axios.post("http://localhost:3000/Login",{
+      const res=await axios.post("http://localhost:3001/user/Login",{
         useremail:email,
         password:pass
       }).catch(error=>{

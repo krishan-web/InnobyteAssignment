@@ -36,7 +36,7 @@ function Profile() {
   const PostUserData=async()=>{
     const token=localStorage.getItem('token');
     
-    const res=await axios.put("http://localhost:3000/Profile",{
+    const res=await axios.put("http://localhost:3001/user/Profile",{
       FirstName:first,
       LastName:last,
       useremail:email,
@@ -58,7 +58,7 @@ function Profile() {
   const init=async()=>{
     const token=localStorage.getItem('token');
     if(token){
-      const res=await axios.get("http://localhost:3000/data",{
+      const res=await axios.get("http://localhost:3001/user/data",{
         headers: {
           'Authorization': `Bearer ${token}`
         }

@@ -1,10 +1,12 @@
 import React,{useState} from 'react'
 import style from './Login/Login.module.css'
 import { useNavigate } from 'react-router-dom';
+import {useSetRecoilState} from 'recoil';
 import axios from 'axios'
+import { userState } from '../Recoil/atom';
 
 function Card() {
-
+  const setUser=useSetRecoilState(userState);
   const [email,setEmail]=useState('');
   const [otp,setOtp]=useState();
   const navigate=useNavigate();
@@ -19,7 +21,7 @@ const handleotp = (event) => {
 
   // To get otp 
   const getOtp=async()=>{
-    const res=await axios.post("http://localhost:3000/otp",{
+    const res=await axios.post("http://localhost:3001/user/otp",{
         useremail:email,
     }).catch(error=>{
         console.log("Failed to make a request",error);
@@ -29,7 +31,7 @@ const handleotp = (event) => {
    
   // To fetch the data from the backend(db).
   const FetchUserData=async()=>{
-      const res=await axios.post("http://localhost:3000/OtpLogin",{
+      const res=await axios.post("http://localhost:3001/user/OtpLogin",{
         useremail:email,
         resOtp:otp
       }).catch(error=>{
@@ -38,6 +40,7 @@ const handleotp = (event) => {
       })
       const data=res.data;
       localStorage.setItem('token',data.token);
+      setUser({email});
       navigate('/');
   } 
   
