@@ -85,7 +85,8 @@ sent.
        
 
 ## 3. Output:
-     ![Reference Image](/screenshots/pic.png)  
+     ![Reference Image](/screenshots/pic.png)
+     
       
 
 
