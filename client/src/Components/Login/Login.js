@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import {useSetRecoilState} from 'recoil';
 import { userState } from '../../Recoil/atom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Card() {
 
@@ -18,6 +20,20 @@ function Card() {
 const handlePass = (event) => {
     setPass(event.target.value);
   };
+
+  const notify=()=>{
+    toast.success('Logged In!', {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      // transition: {Slide}
+      });
+  }  
    
   // To fetch the data from the backend(db).
   const PostUserData=async()=>{
@@ -32,13 +48,17 @@ const handlePass = (event) => {
       setUser({email});
       console.log(data);
       localStorage.setItem('token',data.token);
-      navigate('/');
+      notify();
+      setTimeout(()=>{
+        navigate('/');
+      },3000)
+
   } 
   
 
   return (
     <div className={style.container}>
-    <div className={style.card}>
+      <div className={style.card}>
             <h1 className={style.box}>InnoByte</h1>
             <div className={style.box1}>
                 <div className={style.box11}>
@@ -58,7 +78,18 @@ const handlePass = (event) => {
               </div>
                <p className={style.sign} onClick={()=>navigate("/Signup")}>Signup</p>
             </div>
-    </div>
+      </div>
+      <ToastContainer
+theme="dark"
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover/>
     </div>
   )
 }

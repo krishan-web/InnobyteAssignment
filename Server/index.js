@@ -18,7 +18,7 @@ app.use(cors());
 app.use("/user",userRouter);
 
 // Setting connection with the database.
-mongoose.connect('mongodb+srv://mongo:Krishan123@user.zxf62sd.mongodb.net/',{dbName:'User'});
+mongoose.connect('mongodb+srv://mongo:Krishan123@user.uwkuqey.mongodb.net/',{dbName:'User'});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import {useSetRecoilState} from 'recoil';
 import axios from 'axios'
 import { userState } from '../Recoil/atom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Card() {
   const setUser=useSetRecoilState(userState);
@@ -18,6 +20,34 @@ const handleotp = (event) => {
     setOtp(event.target.value);
   };
 
+const notify=()=>{
+  toast.success('Logged In!', {
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    // transition: {Slide}
+    });
+}  
+
+
+const otpnotify=()=>{
+  toast.success('Otp send!', {
+    position: "top-right",
+    autoClose: 3000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "dark",
+    // transition: {Slide}
+    });
+}  
 
   // To get otp 
   const getOtp=async()=>{
@@ -26,6 +56,7 @@ const handleotp = (event) => {
     }).catch(error=>{
         console.log("Failed to make a request",error);
     })
+    otpnotify();
     console.log(res.data);
   }
    
@@ -41,7 +72,10 @@ const handleotp = (event) => {
       const data=res.data;
       localStorage.setItem('token',data.token);
       setUser({email});
-      navigate('/');
+      notify();
+      setTimeout(()=>{
+        navigate('/');
+      },5000)
   } 
   
 
@@ -69,6 +103,19 @@ const handleotp = (event) => {
                <p className={style.sign} onClick={()=>navigate("/Signup")}>Signup</p>
             </div>
     </div>
+    <ToastContainer
+theme="dark"
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover/>
+{/* // transition={ Slide}, */}
+
     </div>
   )
 }
