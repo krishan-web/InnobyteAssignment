@@ -16,7 +16,7 @@ sent.
     **NOTE**: You can Skip Initialize step. Instead you have to do 
      `npm install`
            
-### 1.Backend Development 
+### 1.Backend Development: 
        + **Initialize Your Project:**
          `npm init`
          
