@@ -1,11 +1,11 @@
 import React,{useState} from 'react'
-import style from './Login.module.css'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import {useSetRecoilState} from 'recoil';
 import { userState } from '../../Recoil/atom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import style from './Login.module.css'
 
 function Card() {
 
