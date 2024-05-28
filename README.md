@@ -12,39 +12,35 @@ sent.
 + Database: MongoDB 
 + Email Service: Node-mailer 
 
-## PROJECT TASK
-    **NOTE**: You can Skip Initialize step. Instead you have to do 
+## PROJECT TASK:
+    NOTE: You can Skip Initialize step. Instead you have to do 
      `npm install`
            
 ### 1.Backend Development: 
-       + **Initialize Your Project:**
-         `npm init`
-         
-         `npm init` command will ask you the information about project name, version, description, entry point and many more.   
++ **Initialize Your Project:**
 
-       +  **Install Dependencies:**
-         `npm install express`
+ `npm init`         
+ `npm init` command will ask you the information about project name, version, description, entry point and many more.   
+
++ **Install Dependencies:**
+ `npm install express`
         
-       + **Install Mongoose** from the command line using `npm`
-       
-         `npm install mongoose`
-        
-        To create User Model
-       + **Install jsonwebtoken** from the command line using `npm`
-         `npm i jsonwebtoken`
-        
-        To create token
-       + **Install Crypto** from the command line using `npm`
-         `npm i crypto-js`
++ **Install Mongoose** from the command line using `npm`       
+ `npm install mongoose`
+
++ **Install jsonwebtoken** from the command line using `npm`
+ `npm i jsonwebtoken`
+        //To create token
++ **Install Crypto** from the command line using `npm`
+ `npm i crypto-js`
      
-       + **Install Nodemailer** from the command line using `npm`
-         `npm install nodemailer`
-      
-       **Nodemailer** is a module for Node.js applications to allow easy as cake email sending.
-       + **Install Cors** from the command line using `npm`
-         `npm i cors`
-       
-       `CORS` is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
++ **Install Nodemailer** from the command line using `npm`
+  `npm install nodemailer`
+  **Nodemailer** is a module for Node.js applications to allow easy as cake email sending.
+
++ **Install Cors** from the command line using `npm`
+  `npm i cors`
+  `CORS` is a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
        
 
 ## How to Connect to Database(MongoDb): 
@@ -59,33 +55,30 @@ sent.
 
 ## 2. Frontend Development:
    #### Getting Started with Create React App
-      + **Initialize Your Project:**
-        ```js
-        npx create-react-app my-app
-        cd my-app
-        npm start
-        ```
-
-        `npx` it's a package runner tool that comes with npm *5.2+*. 
++ **Initialize Your Project:**
+   ```js
+    npx create-react-app my-app
+    cd my-app
+    npm start
+    ```
+  `npx` it's a package runner tool that comes with npm *5.2+*. 
         
-      + **Install React Router DOM** from the command line using `npm`
-        `npm i react-router-dom`
++ **Install React Router DOM** from the command line using `npm`
+  `npm i react-router-dom`
 
-      + **Install Recoil** from the command line using `npm`
-        `npm install recoil`
++ **Install Recoil** from the command line using `npm`
+  `npm install recoil`
        
++ **Install Axios** from the command line using `npm`
+  `npm install axios`
+  *Axios*:To make request to the backend(.post,.put,.get,.delete and many more).
 
-      + **Install Axios** from the command line using `npm`
-        `npm install axios`
-       
-      *Axios*:To make request to the backend(.post,.put,.get,.delete and many more).
-
-       **Install Axios** from the command line using `npm`
-        `npm install react-toastify`
+**Install Axios** from the command line using `npm`
+  `npm install react-toastify`
        
 
 ## 3. Output:
-     ![Reference Image](/screenshots/pic.png)
+![Reference Image](/screenshots/pic.png)
      
       
 
