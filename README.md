@@ -57,7 +57,7 @@ sent.
       e.g mongodb+srv://<username>:<password>@user.uwkuqey.mongodb.net/
    7. Paste this url here `mongoose.connect('url',{dbName: User} )` and also in MongoDb Compass too.
 
-## 2. Frontend Integration:
+## 2. Frontend Development:
    #### Getting Started with Create React App
       + **Initialize Your Project:**
         ```js
