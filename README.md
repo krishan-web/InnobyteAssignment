@@ -77,7 +77,19 @@ sent.
   `npm install react-toastify`
        
 
-## 3. Output:
+## 3. Build & Deployment:
+ ### Backend: 
+  `cd Server` To move into the Server directory
+  To start the backend server, run:
+  `node index.js`
+ ### frontend:
+  `cd client` To move into the client directory
+  To build and start the frontend development server, run:
+  `npm start`
+  To create a production build for deployment, run:
+  `npm run build`
+
+## 4. Output:
 ![Reference Image](/screenshots/pic.png)
      
       

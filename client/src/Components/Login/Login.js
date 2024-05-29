@@ -8,12 +8,14 @@ import 'react-toastify/dist/ReactToastify.css';
 import style from './Login.module.css'
 
 function Card() {
-
+  // state for useremail & password
   const [email,setEmail]=useState('');
   const [pass,setPass]=useState('');
-  const setUser=useSetRecoilState(userState);
+
+  const setUser=useSetRecoilState(userState); // Recoil atom setState
   const navigate=useNavigate();
 
+  // handling event for email & password
   const handleEmail = (event) => {
     setEmail(event.target.value);
   };
@@ -80,16 +82,16 @@ const handlePass = (event) => {
             </div>
       </div>
       <ToastContainer
-theme="dark"
-position="top-right"
-autoClose={5000}
-hideProgressBar={false}
-newestOnTop={false}
-closeOnClick
-rtl={false}
-pauseOnFocusLoss
-draggable
-pauseOnHover/>
+       theme="dark"
+       position="top-right"
+       autoClose={5000}
+       hideProgressBar={false}
+       newestOnTop={false}
+       closeOnClick
+       rtl={false}
+       pauseOnFocusLoss
+       draggable
+       pauseOnHover/>
     </div>
   )
 }

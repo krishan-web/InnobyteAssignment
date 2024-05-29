@@ -6,6 +6,8 @@ import { userState } from '../../Recoil/atom';
 // import { useNavigate } from 'react-router-dom';
 
 function Navbar() {
+  
+  // Getting the Recoil atom userState  
   const userEmail=useRecoilValue(userState);
   const setUser=useSetRecoilState(userState);
   // const navigate=useNavigate();

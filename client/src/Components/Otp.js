@@ -8,19 +8,22 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Card() {
-  const setUser=useSetRecoilState(userState);
-  const [email,setEmail]=useState('');
-  const [otp,setOtp]=useState();
-  const navigate=useNavigate();
 
-  const handleEmail = (event) => {
+  const setUser=useSetRecoilState(userState); // accessing the recoil atom state
+  
+  const [email,setEmail]=useState(''); // state
+  const [otp,setOtp]=useState();  // state
+  
+  const navigate=useNavigate(); // To navigate b/w components
+
+  const handleEmail = (event) => {  // handling the email event
     setEmail(event.target.value);
   };
-const handleotp = (event) => {
+const handleotp = (event) => {  // handling the otp event
     setOtp(event.target.value);
   };
 
-const notify=()=>{
+const notify=()=>{    // toast
   toast.success('Logged In!', {
     position: "top-right",
     autoClose: 3000,
@@ -51,7 +54,7 @@ const otpnotify=()=>{
 
   // To get otp 
   const getOtp=async()=>{
-    const res=await axios.post("http://localhost:3001/user/otp",{
+    const res=await axios.post("http://localhost:3001/user/otp",{  // Making a request to server for an otp 
         useremail:email,
     }).catch(error=>{
         console.log("Failed to make a request",error);
@@ -62,7 +65,7 @@ const otpnotify=()=>{
    
   // To fetch the data from the backend(db).
   const FetchUserData=async()=>{
-      const res=await axios.post("http://localhost:3001/user/OtpLogin",{
+      const res=await axios.post("http://localhost:3001/user/OtpLogin",{ // otpLogin request made   
         useremail:email,
         resOtp:otp
       }).catch(error=>{
@@ -70,7 +73,7 @@ const otpnotify=()=>{
         console.log(error);
       })
       const data=res.data;
-      localStorage.setItem('token',data.token);
+      localStorage.setItem('token',data.token);  // setting the token in local storage
       setUser({email});
       notify();
       setTimeout(()=>{

@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 // import { set } from 'mongoose';
 
 function Profile() {
-
+ // State for firstName,lastName,email,phone,address
   const [first,setFirst]=useState('');
   const [last,setLast]=useState('');
   const [email,setEmail]=useState('');
@@ -13,6 +13,7 @@ function Profile() {
   const [add,setAdd]=useState('');
   const navigate=useNavigate();
 
+  // Handling the events for firstName,lastName,email,Address,Phone
   const handleFirst = (event) => {
     setFirst(event.target.value);
   };
@@ -33,10 +34,11 @@ function Profile() {
     setAdd(event.target.value);
   }
 
+  // Updating the user profile 
   const PostUserData=async()=>{
     const token=localStorage.getItem('token');
     
-    const res=await axios.put("http://localhost:3001/user/Profile",{
+    const res=await axios.put("http://localhost:3001/user/Profile",{ // making a server request to update user profile
       FirstName:first,
       LastName:last,
       useremail:email,
@@ -44,7 +46,7 @@ function Profile() {
       Address:add
     }, {
       headers: {
-        'Authorization': `Bearer ${token}`
+        'Authorization': `Bearer ${token}` // setting the authorization for userauthentication
       }
     }).catch(error =>{
       //handle error
@@ -54,7 +56,7 @@ function Profile() {
     console.log(res.data.Address);
   }
   
-  
+  // Fecthing all data to show
   const init=async()=>{
     const token=localStorage.getItem('token');
     if(token){
@@ -65,7 +67,7 @@ function Profile() {
       }).catch(error=>{console.log(error,"error in data")});
       // const data=await JSON.stringify(res);
       console.log(res);
-
+      // set the state for first,last,add,phone,email
       setEmail(res.data.useremail);
       setFirst(res.data.FirstName);
       setLast(res.data.LastName);

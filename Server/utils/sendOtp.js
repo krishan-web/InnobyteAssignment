@@ -1,7 +1,7 @@
 const nodemailer = require("nodemailer");
 require('dotenv').config()
 
-
+// Creating a transporter.
 const createtransport=()=>{
     const transporter = nodemailer.createTransport({
     service:"hotmail",
@@ -26,7 +26,7 @@ const createtransport=()=>{
                <p>It will expire in 50 seconds!</p>
               ` // HTML body
     };
-  
+    // Sending the email 
     transporter.sendMail(mailOptions, (error,info) => {
        if (error) {
          return console.log(error);

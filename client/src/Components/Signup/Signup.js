@@ -7,15 +7,18 @@ import { userState } from '../../Recoil/atom';
 
 
 function Signup() {
-    
+  // state for firstName,LastName,email & pass.   
   const [first,setFirst]=useState('');
   const [last,setLast]=useState('');
   const [email,setEmail]=useState('');
   const [pass,setPass]=useState('');
 
-  const setUser=useSetRecoilState(userState);
+  const navigate=useNavigate();
 
-  const handleFirst = (event) => {
+  const setUser=useSetRecoilState(userState); // using atom set State
+
+  // handling Events for firsName, lastName, email, pass
+  const handleFirst = (event) => { 
     // console.log(event.target.value);
     setFirst(event.target.value);
   };
@@ -31,15 +34,15 @@ const handlePass = (event) => {
     setPass(event.target.value);
   };
   
-    const navigate=useNavigate();
-
+     // Function to create an acccount
     const PostUserData=async()=>{
-      const res=await axios.post("http://localhost:3001/user/Signup",{
+
+      const res=await axios.post("http://localhost:3001/user/Signup",{  // made backend request to server 
         FirstName:first,
         LastName:last,
         useremail:email,
         password:pass
-      }).catch(error =>{
+      }).catch(error =>{ // handling the axios error.it could be url error 
         //handle error
         console.log("Error in SignUp");
       })
@@ -48,6 +51,8 @@ const handlePass = (event) => {
       const data=res.data;
       // console.log(res);
       localStorage.setItem('token', data.token);
+      localStorage.setItem('useremail',email);
+      localStorage.setItem('emailtoken',data.emailtoken);
       navigate('/EmailVerify');
     }
 

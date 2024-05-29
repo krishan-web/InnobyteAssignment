@@ -1,6 +1,7 @@
 const nodemailer = require("nodemailer");
 require('dotenv').config()
 
+//creating a transporter
 const createtransport=()=>{
     const transporter = nodemailer.createTransport({
     service:"hotmail",
@@ -23,9 +24,10 @@ const createtransport=()=>{
        to: `${user.useremail}`,   // List of recipients
        subject: 'Verify your email', // Subject line
         html: `<p>Hello ${user.FirstName}! Verify Your Email by clicking this link</p>
-               <a href="http://localhost:3000/Email?emailToken=${user.emailToken}">Verify your email!</a>` // HTML body
+               <a href="http://localhost:3000/Email?emailToken=${user.emailToken}?useremail=${user.useremail}">Verify your email!</a>` // HTML body
     };
   
+    // Sending the email
     transporter.sendMail(mailOptions, (error,info) => {
        if (error) {
          return console.log(error);

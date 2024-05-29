@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import style from './Email.module.css'
 
  function EmailVerify() {
+
   return (
     <div>
        <div className={style.container}>

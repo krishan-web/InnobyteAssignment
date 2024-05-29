@@ -26,7 +26,7 @@ router.post('/Signup',async(req,res)=>{
         res.status(403).json({message:'User already existed!'});
     }else{
         const newuser=await User.create({FirstName,LastName,useremail,password,emailToken:crypto.randomBytes(64).toString('hex')}); // newuser created with their details
-        sendVerifyEmail(newuser);
+        sendVerifyEmail(newuser); // sending the mail
         const token=jwt.sign({useremail,password},SECRET,{expiresIn:'1hr'}) // Token created
         const emailtoken=newuser.emailToken;
         res.status(200).json({message:"User created successfully",token,emailtoken});
@@ -47,14 +47,15 @@ router.post('/Login',async(req,res)=>{
     }
 })
 
+//sending the otp 
 router.post('/otp',async(req,res)=>{
     const {useremail}=req.body;
     const valueExist=await User.findOne({useremail});
     if(valueExist){
-          otp=Math.floor(Math.random()*9000+1000);
-          otp_hour=otp_time.getHours()+1;
+          otp=Math.floor(Math.random()*9000+1000); // to create an otp of random number
+          otp_hour=otp_time.getHours()+1;  // Time after which it will expire
           const Name=valueExist.FirstName;
-          sendOtp(Name,otp,useremail);
+          sendOtp(Name,otp,useremail); // sending otp to mail
     }else {
           res.status(403).json({message:'Invalid Credential'});
     }
@@ -63,13 +64,13 @@ router.post('/otp',async(req,res)=>{
 
 // OTP based Login
 router.post('/OtpLogin',async(req,res)=>{
-    const {useremail,resOtp}=req.body;
+    const {useremail,resOtp}=req.body; // requesting for the body
     const valueExist=await User.findOne({useremail});
-    if(valueExist){
+    if(valueExist){  // user existed or not
           if(otp_time.getHours()<otp_hour){
-            if(resOtp==otp){
+            if(resOtp==otp){ // checking the otp
               const token=jwt.sign({useremail},SECRET,{expiresIn:'1hr'}); // Token created 
-              res.json({message:'Logged in Successfully',token});
+              res.json({message:'Logged in Successfully',token}); // making the response
             }else {res.status(403).json({message:'Invalid Credential'});}
           }else {res.status(403).json({message:'Request OTP'});}
     }else {
@@ -77,13 +78,13 @@ router.post('/OtpLogin',async(req,res)=>{
     }
 })
 
-
+// Updating the User profile
 router.put('/Profile',userauthentication,async(req,res)=>{
     const {FirstName,LastName,useremail,Phone,Address}=req.body;
     const valueExist=await User.findOne({useremail}); // Searching for the useremail exist or not
     //console.log(valueExist.FirstName,LastName,password);
     if(valueExist){
-        await User.updateMany({useremail},{$set:{FirstName,LastName,Phone,Address}});
+        await User.updateMany({useremail},{$set:{FirstName,LastName,Phone,Address}}); // Updating the profile of user
         res.json({message:"Updated Successfully",Address,Phone});
     }else{
         res.json({message:"Doesn't Exist"});
@@ -91,6 +92,7 @@ router.put('/Profile',userauthentication,async(req,res)=>{
      
 })
 
+//Fetching the user Data to display
 router.get('/data', userauthentication,async(req, res) => {
 
     const user1 = await User.findOne({ useremail: res.useremail });
@@ -100,4 +102,17 @@ router.get('/data', userauthentication,async(req, res) => {
 
 })
 
-module.exports=router
+// Verifying the email
+router.put('/Email',async(req,res)=>{
+    const {useremail,emailtoken}=req.body; // reqest for the data
+    const verify=await User.findOne({useremail});
+    if(verify){  // User Existed or not
+        if(verify.emailToken==emailtoken){
+          await User.updateOne({useremail},{$set:{isVerified:true}});  // updating the isVerified in user db 
+          res.status(200).json({message:'Successful'});
+        }else res.sendstatus(403);
+    }else res.status(403).json({meassge:"User does not exist"});
+})
+
+
+module.exports=router // exporting the router
