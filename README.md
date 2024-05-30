@@ -2,7 +2,7 @@
 
 Hello, We will learn about User Management API that includes features such as user
 registration, login, user profile management, and OTP-based login. This API will serve as the backend
-for a web applicaƟon. Additionally, after a user successfully signs up, an email confirmation will be
+for a web application. Additionally, after a user successfully signs up, an email confirmation will be
 sent.
 
 ## TECH STACK
